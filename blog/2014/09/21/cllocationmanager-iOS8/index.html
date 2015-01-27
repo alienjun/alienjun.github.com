@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CLLocationManager定位在iOS8上该注意的 - AlienJun的技术博客</title>
+  <meta name="author" content="AlienJun">
+
+  
+  <meta name="description" content="iOS如何设计缓存，模型缓存，URL缓存">
+  <meta name="keywords" content="缓存, iOS缓存，性能优化">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.alienjun.com/blog/2014/09/21/cllocationmanager-iOS8/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="AlienJun的技术博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">AlienJun的技术博客</a></h1>
+  
+    <h2>记录与分享，学习与总结。</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="blog.alienjun.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">CLLocationManager定位在iOS8上该注意的</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-21T21:45:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:45 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>今天突然发现之前一直正常的定位服务在iOS8上不能用了，我用的是一个开源的<a href="https://github.com/smallqiang/MMLocationManager" title="MMLocationManager">组件</a>。
+此组件实现的是一个MKMapView号称定位很准，也没有仔细去究是否定位精确。</p>
+
+<p>现在iOS8上对地理位置处理重新多了一些小的设计，估计是为了兼用一些穿戴的智能设备，看到有两个函数的介绍</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="c1">//使用时可以使用定位</span>
+</span><span class='line'><span class="err">–</span> <span class="n">requestWhenInUseAuthorization</span>
+</span><span class='line'><span class="c1">//后台总是可以使用定位</span>
+</span><span class='line'><span class="err">–</span> <span class="n">requestAlwaysAuthorization</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>很明显就是为了协处理准备的，iOS8使用apple自己的定位服务：
+plist文件中增加key: NSLocationWhenInUseUsageDescription
+value:定位的时候弹出提示权限附带显示的message。 所以在代码中就需要根据plist配置的方式进行调用api
+[_locationManager requestWhenInUseAuthorization];</p>
+
+<p>demo：<a href="https://github.com/alienjun/CLLocationManager-iOS8" title="CLLocationManager-iOS8">点这里</a></p>
+
+<p>原创文章，版权声明:自由转载-非商用-非衍生-保持署名.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">AlienJun</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-09-21T21:45:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:45 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ios/'>ios</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+
+  
+  <style>
+    .flash-video{display:none;}
+</style>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tsina">新浪微博</a>
+	<a class="jiathis_button_tqq">腾讯微博</a>
+	<a class="jiathis_button_qzone">QQ空间</a>
+	<a class="jiathis_button_weixin">微信</a>
+	<a class="jiathis_button_renren">人人网</a>
+	<a class="jiathis_button_douban">豆瓣</a>
+
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1934921" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1934921"></script>
+<!-- UY END -->
+
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/08/23/cache-performance/" title="Previous Post: 缓存与性能">&laquo; 缓存与性能</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/09/26/write-octopress-blog-on-multiple-machines/" title="Next Post: 【转】在多台电脑上写Octopress博客">【转】在多台电脑上写Octopress博客 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/27/2014-report/">2014总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/26/ios-development-tips/">开发tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/26/write-octopress-blog-on-multiple-machines/">【转】在多台电脑上写Octopress博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/21/cllocationmanager-iOS8/">CLLocationManager定位在iOS8上该注意的</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/23/cache-performance/">缓存与性能</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+  <h1>About Me</h1>
+  <p>新浪微博：<a href="http://weibo.com/alienjunx" target="_blank">AlienJunX</a></p>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - AlienJun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ios | AlienJun的技术博客]]></title>
+  <link href="http://alienjun.github.io/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://alienjun.github.io/"/>
+  <updated>2015-01-27T17:15:30+08:00</updated>
+  <id>http://alienjun.github.io/</id>
+  <author>
+    <name><![CDATA[AlienJun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[开发tips]]></title>
+    <link href="http://alienjun.github.io/blog/2014/09/26/ios-development-tips/"/>
+    <updated>2014-09-26T14:43:13+08:00</updated>
+    <id>http://alienjun.github.io/blog/2014/09/26/ios-development-tips</id>
+    <content type="html"><![CDATA[<p>1.uitableview 在ios6和ios7以上布局的问题，frame.y要么多出20pt要么少了20pt，然后就是到处用到UITableView
+的地方都去判断 if(ios7_Or_Later) 之类的，这样可以解决只是同样的代码写的到处都是了。与此同时我发现
+了一个很好解决此问题的办法，就是反射，如果uitableview都是从xib或者storyboard中实例化出来的，在
+viewDidLoad执行之前已经实例化好了，这时候如果我们有一个共有的BaseViewController,那就回先执行
+BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的属性，（注意uitableview 作为IBOutlet
+进行于界面关联。）拿到了uitableview，那就可以对它进行一些布局的调整，以修正偏移的问题。
+代码片段：</p>
+
+<pre><code class="objc">-(void)fixTableView
+{
+    if (!IOS7_OR_LATER) {
+        unsigned int outCount, i;
+        objc_property_t *properties = class_copyPropertyList([self class], &amp;outCount);
+        for (i = 0; i &lt; outCount; i++)
+        {
+            objc_property_t property = properties[i];
+            NSString *propName = [NSString stringWithUTF8String:property_getName(property)];
+            //正对uitableview对ios7以下版本适配，controller中的tableview必须命名为tableView
+            if ([propName isEqualToString:@"tableView"]) {
+                //fprintf(stdout, "%s %s\n", property_getName(property), property_getAttributes(property));
+                id value=[self valueForKey:propName];
+                UITableView *t=value;
+                CGRect f=t.frame;
+                f.origin.y=f.origin.y+20;
+                f.size.height=f.size.height-20;
+                t.frame=f;
+            }
+        }
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[【转】在多台电脑上写Octopress博客]]></title>
+    <link href="http://alienjun.github.io/blog/2014/09/26/write-octopress-blog-on-multiple-machines/"/>
+    <updated>2014-09-26T13:51:01+08:00</updated>
+    <id>http://alienjun.github.io/blog/2014/09/26/write-octopress-blog-on-multiple-machines</id>
+    <content type="html"><![CDATA[<p>原文：<a href="http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/">http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/</a></p>
+
+<p>我将介绍如何在多台电脑上部署Octopress，我假设你已经会在一台电脑上部署Octopress了，如果你还不会或者甚至不知道Octopress是什么，那么就先看看Octopress的官网，然后跟着Document一步一步安装部署就行了。也许你弄坏了本地的Octopress文件，重装了电脑，或和我一样有了一台新电脑:)，下面的内容都会告诉你怎么做。</p>
+
+<p>Octopress原理</p>
+
+<p>我以部署到Github为例，Octopress的git仓库(repository)有两个分支，分别是master和source。master存储的是博客网站本身，而source存储的是生成博客的源文件。master的内容放在根目录的_deploy文件夹内，当你push源文件时会忽略，它使用的是rake deploy命令来更新的。</p>
+
+<p>创建一个本地的Octopress仓库</p>
+
+<p>重新创建一个已经存在的本地Octopress仓库只需要以下几个简单的步骤即可。</p>
+
+<p>克隆(clone)博客到新机器</p>
+
+<p>首先将博客的源文件clone到本地的octopress文件夹内。</p>
+
+<pre><code>$ git clone -b source git@github.com:username/username.github.com.git octopress
+</code></pre>
+
+<p>然后将博客文件clone到octopress的<em>deploy文件夹内。
+<code>
+$ cd octopress
+$ git clone git@github.com:username/username.github.com.git _deploy
+</code>
+然后安装博客，即bundler和需要的rubygem。
+<code>
+$ gem install bundler
+$ rbenv rehash    # If you use rbenv, rehash to be able to run the bundle command
+$ bundle install
+$ rake setup_github_pages
+</code>
+最后会提示输入仓库的ssh url。
+<code>
+Enter the read/write url for your repository
+(For example, 'git@github.com:your_username/your_username.github.com)
+</code>
+如果你设置了自定义域名，需要将根目录的</em>config.yml里的url再改成你自己的域名。 这样就建好了一个新的本地仓库了。</p>
+
+<p>更新和推送</p>
+
+<p>当你要在一台电脑写博客或做更改时，首先更新source仓库。更新master并不是必须的，因为你更改源文件之后还是需要rake generate的。
+<code>
+$ cd octopress
+$ git pull origin source  # update the local source branch
+$ cd ./_deploy
+$ git pull origin master  # update the local master branch
+</code>
+写完博客之后不要忘了推送到remote，下面的步骤在每次更改之后都必须做一遍。
+<code>
+$ rake generate
+$ git add .
+$ git commit -am "Some comment here."
+$ git push origin source  # update the remote source branch
+$ rake deploy             # update the remote master branch
+</code></p>
+
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;以下原创&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</p>
+
+<h5>注意，将会遇到错误：</h5>
+
+<p>参考：<a href="http://www.lixumin.com/blog/2014/05/07/mac-for-github-octopress/" title="link">http://www.lixumin.com/blog/2014/05/07/mac-for-github-octopress/</a></p>
+
+<p>同时我也遇到这个错误了，bundle install 一直出错，我是升级ruby到2.1.1才解决了这样的问题。 同时也带来了cocoapods没法用了，于是我
+把cocoapods 也升级。一切又是那么美好了。
+<code>
+gem update CocoaPods
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CLLocationManager定位在iOS8上该注意的]]></title>
+    <link href="http://alienjun.github.io/blog/2014/09/21/cllocationmanager-iOS8/"/>
+    <updated>2014-09-21T21:45:06+08:00</updated>
+    <id>http://alienjun.github.io/blog/2014/09/21/cllocationmanager-iOS8</id>
+    <content type="html"><![CDATA[<p>今天突然发现之前一直正常的定位服务在iOS8上不能用了，我用的是一个开源的<a href="https://github.com/smallqiang/MMLocationManager" title="MMLocationManager">组件</a>。
+此组件实现的是一个MKMapView号称定位很准，也没有仔细去究是否定位精确。</p>
+
+<p>现在iOS8上对地理位置处理重新多了一些小的设计，估计是为了兼用一些穿戴的智能设备，看到有两个函数的介绍</p>
+
+<pre><code class="objc">//使用时可以使用定位
+– requestWhenInUseAuthorization
+//后台总是可以使用定位
+– requestAlwaysAuthorization
+</code></pre>
+
+<p>很明显就是为了协处理准备的，iOS8使用apple自己的定位服务：
+plist文件中增加key: NSLocationWhenInUseUsageDescription
+value:定位的时候弹出提示权限附带显示的message。 所以在代码中就需要根据plist配置的方式进行调用api
+[_locationManager requestWhenInUseAuthorization];</p>
+
+<p>demo：<a href="https://github.com/alienjun/CLLocationManager-iOS8" title="CLLocationManager-iOS8">点这里</a></p>
+
+<p>原创文章，版权声明:自由转载-非商用-非衍生-保持署名.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[缓存与性能]]></title>
+    <link href="http://alienjun.github.io/blog/2014/08/23/cache-performance/"/>
+    <updated>2014-08-23T23:50:00+08:00</updated>
+    <id>http://alienjun.github.io/blog/2014/08/23/cache-performance</id>
+    <content type="html"><![CDATA[<p>缓存，一词对做过web开发的开发者来说也许很熟悉（有些开发者可能没有关注过），其目的都是为了提升应用的
+性能而采取的一种技术；如今已经是无缓存不架构，在从事web开发的初期我也很少关注缓存，到自己架构项目后
+设计缓存框架才意识到缓存怎么才能更好的为我们的应用带来更好的体验。</p>
+
+<h4>移动客户端的缓存如何设计？</h4>
+
+<ol>
+<li><h5>按需缓存</h5>
+
+<p>和浏览器一样，将每一次访问的请求缓存，缓存的方式根据http1.1的缓存控制头决定。  但实际开发中可能不
+完全依赖于服务器，大多都是在客户端进行操作，请求从服务器获取到内容后，以请求的URL以某种格式编码后作
+为名称，并将内容存储在本地文件系统，之后每次对于同样的URL请求，先检查缓存中是否存在，只有当数据不存
+在（或者过期）的情况下才从服务器获取数据。</p></li>
+<li><h5>预缓存</h5>
+
+<p>这种情况是缓存全部内容，以便离线浏览。预缓存最常见都是存储在sqlite数据库和core data中。
+预缓存的应用场景，比如网易的新闻可以离线阅读，这样就是通过点击离线缓存，将需要看的内容预先缓存后在无
+网络下进行阅读；再有很多稍后阅读类应用都是使用预缓存。（废话太多。。）
+但当我想起11年开发的一款应用时，原来我们用的就是预缓存，预先缓存其实可以理解为一个数据同步过程，将远
+程服务器上的数据同步到本地，当时做的就是这样一种数据更新机制。</p></li>
+</ol>
+
+
+<p>目前很多客户端都是按需缓存，例如QQ，微博等。</p>
+
+<h4>缓存什么？</h4>
+
+<p>网络应用开发，缓存的当然是耗时耗电的网络加载的数据了，只要是网络请求所获得的数据都可以考虑缓存，例如
+一个典型的案例：点击某个用户的头像查看用户首页，不能每次点击都及时从网络加载吧，假如访问用户首页的
+url：<a href="http://user.xxx.com/12346">http://user.xxx.com/12346</a> 那第一次访问即可将用户的信息和用户的头像通过访问的url进行缓存
+（头像的url肯定不是一样的）。<br/>
+所以缓存就是在缓存网络请求的文本数据和图片数据。就目前api交互的数据格式都是以json或者xml，<em>我们要缓存
+json格式的数据和图片即可达到我们的目的。</em></p>
+
+<p>  基于前面的讨论，现在以一些代码来说明，找了一个典型的图片缓存库来把玩一下（不是教怎么用缓存库，
+  不在此篇幅范围）；<a href="https://github.com/rs/SDWebImage" title="SDWebImage">SDWebImage</a>。<br/>
+  SDWebImage 就是按需缓存的，设置一个固定的缓存过期时间，每次请求先检查缓存，如果过期或则不存在才
+  从远程服务器获取。
+  <a href="https://github.com/rs/SDWebImage/tree/master/SDWebImage">https://github.com/rs/SDWebImage/tree/master/SDWebImage</a> 打开它的库一看，哇靠，这么多
+  文件
+  <img src="http://alienjun.github.io/assets/images/article/20140824-1.png"  width="800" /><br/>
+  其实从文件名都能看出个大概，类别扩展先看UIImageView+WebCache.h 其他暂时不关心，常用的方法设
+  置一个图片的url和一个默认图片：</p>
+
+<pre><code class="objc">/**
+ * Set the imageView `image` with an `url` and a placeholder.
+ *
+ * The download is asynchronous and cached.
+ *
+ * @param url         The url for the image.
+ * @param placeholder The image to be set initially, until the image request finishes.
+ * @see sd_setImageWithURL:placeholderImage:options:
+ */
+- (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder;
+</code></pre>
+
+<p>按他的注释我们知道它是一个异步下载并缓存，其实这样就够了；<br/>
+在看看SDImageCache.h 、SDWebImageManager.h  重点在这里，SDImageCache.h 有一个单例方法，初
+始化一个默认的图片缓存路径在Library/Caches下com.hackemist.SDWebImageCache. 是默认的文件夹名
+称，同时也作为内存中缓存的名字，然后还向通知中心注册了三个通知：<br/>
+&#8220;` objective-c</p>
+
+<h1>if TARGET_OS_IPHONE</h1>
+
+<p>//当内存警告时清理内存
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(clearMemory)
+                                                     name:UIApplicationDidReceiveMemoryWarningNotification
+                                                   object:nil];
+//程序将要结束时清理磁盘过期文件
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(cleanDisk)
+                                                     name:UIApplicationWillTerminateNotification
+                                                   object:nil];
+//当程序进入后台时清理磁盘缓存的过期文件
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(backgroundCleanDisk)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];</p>
+
+<h1>endif</h1>
+
+<pre><code>
+SDWebImageManager.h 最核心函数：
+</code></pre>
+
+<ul>
+<li>(id <SDWebImageOperation>)downloadImageWithURL:(NSURL *)url
+                                       options:(SDWebImageOptions)options
+                                      progress:(SDWebImageDownloaderProgressBlock)progressBlock
+                                     completed:(SDWebImageCompletionWithFinishedBlock)completedBlock;</li>
+</ul>
+
+
+<p>&#8220;`
+这里就是处理请求和缓存的函数，逻辑就是根据设置的缓存策略进行请求并缓存，然后将图片同步回主线程。<br/>
+好了，看了SDWebImage的缓存实现我们是不是应该参考和借鉴一下它的思路设计一个满足我们业务需求的缓存实现
+当然图片缓存就可以用他的，如果图片缓存和业务数据缓存都用同一套代码就更好了。<br/>
+这里是我参考SDWebImage写的一个小demo  <a href="https://github.com/alienjun/MyCacheTest" title="MyCacheTest">点这里</a>，欢迎拍砖，还望不吝啬的支教。</p>
+
+<p>  原创文章，版权声明:自由转载-非商用-非衍生-保持署名.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS中多种单例写法]]></title>
+    <link href="http://alienjun.github.io/blog/2014/06/11/ios-singleton/"/>
+    <updated>2014-06-11T20:27:06+08:00</updated>
+    <id>http://alienjun.github.io/blog/2014/06/11/ios-singleton</id>
+    <content type="html"><![CDATA[<p>Singleton
+单例模式在整个程序生命周期内，该对象只有一份存在内存中，就是C中的全局变量
+在实际开发中经常会有用到单例模式，记录一下oc中使用单例模式的几种写法。
+在oc中通常默认以default、shared、current开头命名的方法。
+&#8220;` objc
+static Broadcast *b;</p>
+
+<p>//第一种
++(Broadcast *)sharedBroadcast{
+    if (b==nil) {
+       b=[[self alloc]init];
+    }
+    return b;
+}</p>
+
+<p>//第二种，线程完全
++(Broadcast <em>)sharedBroadcast{
+    @synchronized(self){
+        if (b==nil) {
+            b=[[self alloc]init];
+        }
+    }
+    return b;
+}
+//第三种，线程安全，使用GCD
++(Broadcast </em>)sharedBroadcast{
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        if (b==nil) {
+            b=[[self alloc]init];
+        }
+    });
+    return b;
+}
+//第四种，重写initialize方法
++(void) initialize{
+    static BOOL initalized=NO;
+    if (!initalized) {
+        initalized=YES;
+        b=[[self alloc]init];
+    }
+}
+&#8220;`</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,93 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>AlienJun的技术博客</title>
-  <meta name="author" content="AlienJun">
-
-  
-  <meta name="description" content="标题就是这么严肃的、单调的。
-这一年过的不算漫长，因为顺着变化，我做了很多事情，一次次的尝试一次次跳出给自己画的圈。忙时忙到差点猝死在出租车上；闲时看书看到不懂看了什么（因为根本就没看）…… 好了，再懒也要回忆一下这年怎么过来的。 又一年过去不管多努力，都没能和别人家的孩子那样牛逼飞满天， &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://blog.alienjun.com/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="AlienJun的技术博客" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">AlienJun的技术博客</a></h1>
-  
-    <h2>记录与分享，学习与总结。</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="blog.alienjun.com">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">首页</a></li>
-  <li><a href="/blog/archives">所有文章</a></li>
-  <li><a href="/about">关于我</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[AlienJun的技术博客]]></title>
+  <link href="http://blog.alienjun.com/atom.xml" rel="self"/>
+  <link href="http://blog.alienjun.com/"/>
+  <updated>2015-01-27T16:49:12+08:00</updated>
+  <id>http://blog.alienjun.com/</id>
+  <author>
+    <name><![CDATA[AlienJun]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/27/2014-report/">2014总结</a></h1>
-    
-    
-      <p class="meta">
-        
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
-
-
-
-<time class='entry-date' datetime='2015-01-27T15:11:58+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:11 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>标题就是这么严肃的、单调的。
+  
+  <entry>
+    <title type="html"><![CDATA[2014总结]]></title>
+    <link href="http://blog.alienjun.com/blog/2015/01/27/2014-report/"/>
+    <updated>2015-01-27T15:11:58+08:00</updated>
+    <id>http://blog.alienjun.com/blog/2015/01/27/2014-report</id>
+    <content type="html"><![CDATA[<p>标题就是这么严肃的、单调的。
 这一年过的不算漫长，因为顺着变化，我做了很多事情，一次次的尝试一次次跳出给自己画的圈。忙时忙到差点猝死在出租车上；闲时看书看到不懂看了什么（因为根本就没看）…… 好了，再懒也要回忆一下这年怎么过来的。</p>
 
 <p>又一年过去不管多努力，都没能和别人家的孩子那样牛逼飞满天，所以我很痛恨那个别人家的孩子。还记得去年过年回家，被大哥（自称很帅的人）号称的自制米酒给撂倒了一次（only），然后就没有然后了。 年初回到老东家，开始紧张而忙碌的工作，其实就是继续上一年的项目进行收尾，坑挖多了总得有人填吧？拉着兄弟们一起干啊，我给他们打足了气，一定要尽力的完成好自己的工作；客户就是那样永远不折腾死你就不罢休（更何况是zf项目呢），况且没有人愿意一直和你一起坚持做一些对他们毫无意义的事情的，说一个年轻的开发者存在经验不足也好，气躁轻狂也罢，加上其他因素的影响团队的小伙伴们坐不住了。期间也有朋友邀请我加入他们的初创公司，本着过往经验不看好他们的项目而婉言谢绝了。生命很短暂坚持做有意义的事情一直在催促我，未来在哪里？ 一直待在原地观望久了发现看不到未来，氛围会影响思考并一味影响你的大方向时，你就应该考虑是不是换个地方，换个姿势用电脑了。进入W公司是今年做的最明智的决定，Growth Hacker理念、技术为王的精神还确实是影响了我，只是比较遗憾的是没能继续和各位geeker  and hacker 一起战斗，一切源于一次下班途中坐在出租车上呼吸都困难，当时以为会猝死了，万幸还好看见了第二天的太阳。而后不久在小伙伴G的引荐下见了他们CEO后，决定加入到他们team，同样是相对宽松的氛围，在此表示对小伙伴G的感谢；就目前O2O项目已经上线了，旧款产品也已经被完全重写了90%。这一年工作就是自己给自己画圈然后又不断跳出自己画的圈（当然了圈和坑差不多的），不断尝试和积累中度过。</p>
@@ -97,35 +28,15 @@
 <p>尽管2014带给我很多收获，这些背后总是艰辛的；只有走过一段困难的日子，回忆起来都会嘴角上扬。由于长期缺少锻炼，现在脖子酸啊，视力也明显下降了许多，我想我是需要适时的锻炼了。说实话一年就靠这么一篇总结是完全不够的，我平时是有时常总结的习惯，只是却没有用文字的形式沉淀下来；以至于存着又被覆盖，又存又覆盖的良性循环之中。来上海快三年了，一直没能爱上这座城市的食物，家乡的特色米粉，各种菜肴已经在我的味觉烙下了深深的印记。所以有时间了都会做点拿手好菜来填填肚子，算下来貌似什么菜都玩的转啊（真不是吹牛）。</p>
 
 <p>时间匆匆，2014即将过去，值得庆幸的是我竟然买到了回家的火车票，在天朝还有比买到回家的票高兴的事情吗？杂乱的文字中，看不懂绝对是正常的，我只是留下来给自己一个交代。全心投入感兴趣的事，将会发生在未来的哪个点？  2015 还有很多事情要做，还有很多书籍要读，还有很多代码要写，还有很多固定模式等着我们去打破；保持开放的思想，持续学习，加强创新意识，这也许就是即将到来的2015主题。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/09/26/ios-development-tips/">开发tips</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-26T14:43:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:43 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>1.uitableview 在ios6和ios7以上布局的问题，frame.y要么多出20pt要么少了20pt，然后就是到处用到UITableView
+  <entry>
+    <title type="html"><![CDATA[开发tips]]></title>
+    <link href="http://blog.alienjun.com/blog/2014/09/26/ios-development-tips/"/>
+    <updated>2014-09-26T14:43:13+08:00</updated>
+    <id>http://blog.alienjun.com/blog/2014/09/26/ios-development-tips</id>
+    <content type="html"><![CDATA[<p>1.uitableview 在ios6和ios7以上布局的问题，frame.y要么多出20pt要么少了20pt，然后就是到处用到UITableView
 的地方都去判断 if(ios7_Or_Later) 之类的，这样可以解决只是同样的代码写的到处都是了。与此同时我发现
 了一个很好解决此问题的办法，就是反射，如果uitableview都是从xib或者storyboard中实例化出来的，在
 viewDidLoad执行之前已经实例化好了，这时候如果我们有一个共有的BaseViewController,那就回先执行
@@ -179,35 +90,15 @@ BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的�
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/09/26/write-octopress-blog-on-multiple-machines/">【转】在多台电脑上写Octopress博客</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-26T13:51:01+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:51 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>原文：<a href="http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/">http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/</a></p>
+  <entry>
+    <title type="html"><![CDATA[【转】在多台电脑上写Octopress博客]]></title>
+    <link href="http://blog.alienjun.com/blog/2014/09/26/write-octopress-blog-on-multiple-machines/"/>
+    <updated>2014-09-26T13:51:01+08:00</updated>
+    <id>http://blog.alienjun.com/blog/2014/09/26/write-octopress-blog-on-multiple-machines</id>
+    <content type="html"><![CDATA[<p>原文：<a href="http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/">http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/</a></p>
 
 <p>我将介绍如何在多台电脑上部署Octopress，我假设你已经会在一台电脑上部署Octopress了，如果你还不会或者甚至不知道Octopress是什么，那么就先看看Octopress的官网，然后跟着Document一步一步安装部署就行了。也许你弄坏了本地的Octopress文件，重装了电脑，或和我一样有了一台新电脑:)，下面的内容都会告诉你怎么做。</p>
 
@@ -297,35 +188,15 @@ BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的�
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>gem update CocoaPods</span></code></pre></td></tr></table></div></figure>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/09/21/cllocationmanager-iOS8/">CLLocationManager定位在iOS8上该注意的</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-21T21:45:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:45 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天突然发现之前一直正常的定位服务在iOS8上不能用了，我用的是一个开源的<a href="https://github.com/smallqiang/MMLocationManager" title="MMLocationManager">组件</a>。
+  <entry>
+    <title type="html"><![CDATA[CLLocationManager定位在iOS8上该注意的]]></title>
+    <link href="http://blog.alienjun.com/blog/2014/09/21/cllocationmanager-iOS8/"/>
+    <updated>2014-09-21T21:45:06+08:00</updated>
+    <id>http://blog.alienjun.com/blog/2014/09/21/cllocationmanager-iOS8</id>
+    <content type="html"><![CDATA[<p>今天突然发现之前一直正常的定位服务在iOS8上不能用了，我用的是一个开源的<a href="https://github.com/smallqiang/MMLocationManager" title="MMLocationManager">组件</a>。
 此组件实现的是一个MKMapView号称定位很准，也没有仔细去究是否定位精确。</p>
 
 <p>现在iOS8上对地理位置处理重新多了一些小的设计，估计是为了兼用一些穿戴的智能设备，看到有两个函数的介绍</p>
@@ -349,35 +220,15 @@ value:定位的时候弹出提示权限附带显示的message。 所以在代码
 <p>demo：<a href="https://github.com/alienjun/CLLocationManager-iOS8" title="CLLocationManager-iOS8">点这里</a></p>
 
 <p>原创文章，版权声明:自由转载-非商用-非衍生-保持署名.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/23/cache-performance/">缓存与性能</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-23T23:50:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>11:50 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>缓存，一词对做过web开发的开发者来说也许很熟悉（有些开发者可能没有关注过），其目的都是为了提升应用的
+  <entry>
+    <title type="html"><![CDATA[缓存与性能]]></title>
+    <link href="http://blog.alienjun.com/blog/2014/08/23/cache-performance/"/>
+    <updated>2014-08-23T23:50:00+08:00</updated>
+    <id>http://blog.alienjun.com/blog/2014/08/23/cache-performance</id>
+    <content type="html"><![CDATA[<p>缓存，一词对做过web开发的开发者来说也许很熟悉（有些开发者可能没有关注过），其目的都是为了提升应用的
 性能而采取的一种技术；如今已经是无缓存不架构，在从事web开发的初期我也很少关注缓存，到自己架构项目后
 设计缓存框架才意识到缓存怎么才能更好的为我们的应用带来更好的体验。</p>
 
@@ -417,7 +268,7 @@ json格式的数据和图片即可达到我们的目的。</em></p>
   从远程服务器获取。
   <a href="https://github.com/rs/SDWebImage/tree/master/SDWebImage">https://github.com/rs/SDWebImage/tree/master/SDWebImage</a> 打开它的库一看，哇靠，这么多
   文件
-  <img src="/assets/images/article/20140824-1.png"  width="800" /><br/>
+  <img src="http://blog.alienjun.com/assets/images/article/20140824-1.png"  width="800" /><br/>
   其实从文件名都能看出个大概，类别扩展先看UIImageView+WebCache.h 其他暂时不关心，常用的方法设
   置一个图片的url和一个默认图片：</p>
 
@@ -506,35 +357,15 @@ json格式的数据和图片即可达到我们的目的。</em></p>
 这里是我参考SDWebImage写的一个小demo  <a href="https://github.com/alienjun/MyCacheTest" title="MyCacheTest">点这里</a>，欢迎拍砖，还望不吝啬的支教。</p>
 
 <p>  原创文章，版权声明:自由转载-非商用-非衍生-保持署名.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/11/ios-singleton/">iOS中多种单例写法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-11T20:27:06+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:27 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Singleton
+  <entry>
+    <title type="html"><![CDATA[iOS中多种单例写法]]></title>
+    <link href="http://blog.alienjun.com/blog/2014/06/11/ios-singleton/"/>
+    <updated>2014-06-11T20:27:06+08:00</updated>
+    <id>http://blog.alienjun.com/blog/2014/06/11/ios-singleton</id>
+    <content type="html"><![CDATA[<p>Singleton
 单例模式在整个程序生命周期内，该对象只有一份存在内存中，就是C中的全局变量
 在实际开发中经常会有用到单例模式，记录一下oc中使用单例模式的几种写法。
 在oc中通常默认以default、shared、current开头命名的方法。</p>
@@ -615,107 +446,16 @@ json格式的数据和图片即可达到我们的目的。</em></p>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-</div>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[Hello World!]]></title>
+    <link href="http://blog.alienjun.com/blog/2014/05/31/hello-world/"/>
+    <updated>2014-05-31T01:57:46+08:00</updated>
+    <id>http://blog.alienjun.com/blog/2014/05/31/hello-world</id>
+    <content type="html"><![CDATA[<p>第一次使用Octopress，Hello Octopress！</p>
+]]></content>
+  </entry>
   
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/05/31/hello-world/">Hello World!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-31T01:57:46+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>1:57 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>第一次使用Octopress，Hello Octopress！</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2015/01/27/2014-report/">2014总结</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/26/ios-development-tips/">开发tips</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/26/write-octopress-blog-on-multiple-machines/">【转】在多台电脑上写Octopress博客</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/21/cllocationmanager-iOS8/">CLLocationManager定位在iOS8上该注意的</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/08/23/cache-performance/">缓存与性能</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-<section>
-  <h1>About Me</h1>
-  <p>新浪微博：<a href="http://weibo.com/alienjunx" target="_blank">AlienJunX</a></p>
-</section>
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - AlienJun -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+</feed>
