@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://alienjun.github.io
+title: AlienJun的技术博客
+subtitle: 记录与分享，学习与总结。
+author: AlienJun
 simple_search: https://www.google.com/search
 description:
 
@@ -99,3 +99,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+#weibo
+weibo_share: true
