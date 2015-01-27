@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ios | AlienJun的技术博客]]></title>
   <link href="http://alienjun.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://alienjun.github.io/"/>
-  <updated>2015-01-27T17:20:41+08:00</updated>
+  <updated>2015-01-27T17:39:19+08:00</updated>
   <id>http://alienjun.github.io/</id>
   <author>
     <name><![CDATA[AlienJun]]></name>
@@ -26,7 +26,7 @@ BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的�
 进行于界面关联。）拿到了uitableview，那就可以对它进行一些布局的调整，以修正偏移的问题。
 代码片段：</p>
 
-<pre><code class="objc">-(void)fixTableView
+<pre><code class="obj-c">-(void)fixTableView
 {
     if (!IOS7_OR_LATER) {
         unsigned int outCount, i;
@@ -137,7 +137,7 @@ gem update CocoaPods
 
 <p>现在iOS8上对地理位置处理重新多了一些小的设计，估计是为了兼用一些穿戴的智能设备，看到有两个函数的介绍</p>
 
-<pre><code class="objc">//使用时可以使用定位
+<pre><code class="obj-c">//使用时可以使用定位
 – requestWhenInUseAuthorization
 //后台总是可以使用定位
 – requestAlwaysAuthorization
@@ -272,7 +272,7 @@ SDWebImageManager.h 最核心函数：
 单例模式在整个程序生命周期内，该对象只有一份存在内存中，就是C中的全局变量
 在实际开发中经常会有用到单例模式，记录一下oc中使用单例模式的几种写法。
 在oc中通常默认以default、shared、current开头命名的方法。
-&#8220;` objc
+&#8220;` obj-c
 static Broadcast *b;</p>
 
 <p>//第一种
