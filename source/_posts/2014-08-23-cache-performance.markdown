@@ -60,8 +60,9 @@ json格式的数据和图片即可达到我们的目的。*
 按他的注释我们知道它是一个异步下载并缓存，其实这样就够了；  
 在看看SDImageCache.h 、SDWebImageManager.h  重点在这里，SDImageCache.h 有一个单例方法，初
 始化一个默认的图片缓存路径在Library/Caches下com.hackemist.SDWebImageCache. 是默认的文件夹名
-称，同时也作为内存中缓存的名字，然后还向通知中心注册了三个通知：  
-``` objective-c
+称，同时也作为内存中缓存的名字，然后还向通知中心注册了三个通知：
+
+``` obj-c
 #if TARGET_OS_IPHONE
 //当内存警告时清理内存
         [[NSNotificationCenter defaultCenter] addObserver:self
