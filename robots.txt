@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://blog.alienjun.com/sitemap.xml 
+Sitemap: http://alienjun.github.io/sitemap.xml 

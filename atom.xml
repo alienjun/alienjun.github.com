@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[AlienJun的技术博客]]></title>
-  <link href="http://blog.alienjun.com/atom.xml" rel="self"/>
-  <link href="http://blog.alienjun.com/"/>
-  <updated>2015-01-27T16:49:12+08:00</updated>
-  <id>http://blog.alienjun.com/</id>
+  <link href="http://alienjun.github.io/atom.xml" rel="self"/>
+  <link href="http://alienjun.github.io/"/>
+  <updated>2015-06-15T18:10:09+08:00</updated>
+  <id>http://alienjun.github.io/</id>
   <author>
     <name><![CDATA[AlienJun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[2014总结]]></title>
-    <link href="http://blog.alienjun.com/blog/2015/01/27/2014-report/"/>
+    <link href="http://alienjun.github.io/blog/2015/01/27/2014-report/"/>
     <updated>2015-01-27T15:11:58+08:00</updated>
-    <id>http://blog.alienjun.com/blog/2015/01/27/2014-report</id>
+    <id>http://alienjun.github.io/blog/2015/01/27/2014-report</id>
     <content type="html"><![CDATA[<p>标题就是这么严肃的、单调的。
 这一年过的不算漫长，因为顺着变化，我做了很多事情，一次次的尝试一次次跳出给自己画的圈。忙时忙到差点猝死在出租车上；闲时看书看到不懂看了什么（因为根本就没看）…… 好了，再懒也要回忆一下这年怎么过来的。</p>
 
@@ -33,9 +33,9 @@
   
   <entry>
     <title type="html"><![CDATA[开发tips]]></title>
-    <link href="http://blog.alienjun.com/blog/2014/09/26/ios-development-tips/"/>
+    <link href="http://alienjun.github.io/blog/2014/09/26/ios-development-tips/"/>
     <updated>2014-09-26T14:43:13+08:00</updated>
-    <id>http://blog.alienjun.com/blog/2014/09/26/ios-development-tips</id>
+    <id>http://alienjun.github.io/blog/2014/09/26/ios-development-tips</id>
     <content type="html"><![CDATA[<p>1.uitableview 在ios6和ios7以上布局的问题，frame.y要么多出20pt要么少了20pt，然后就是到处用到UITableView
 的地方都去判断 if(ios7_Or_Later) 之类的，这样可以解决只是同样的代码写的到处都是了。与此同时我发现
 了一个很好解决此问题的办法，就是反射，如果uitableview都是从xib或者storyboard中实例化出来的，在
@@ -66,7 +66,7 @@ BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的�
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fixTableView</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fixTableView</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">IOS7_OR_LATER</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">outCount</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
@@ -95,9 +95,9 @@ BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的�
   
   <entry>
     <title type="html"><![CDATA[【转】在多台电脑上写Octopress博客]]></title>
-    <link href="http://blog.alienjun.com/blog/2014/09/26/write-octopress-blog-on-multiple-machines/"/>
+    <link href="http://alienjun.github.io/blog/2014/09/26/write-octopress-blog-on-multiple-machines/"/>
     <updated>2014-09-26T13:51:01+08:00</updated>
-    <id>http://blog.alienjun.com/blog/2014/09/26/write-octopress-blog-on-multiple-machines</id>
+    <id>http://alienjun.github.io/blog/2014/09/26/write-octopress-blog-on-multiple-machines</id>
     <content type="html"><![CDATA[<p>原文：<a href="http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/">http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/</a></p>
 
 <p>我将介绍如何在多台电脑上部署Octopress，我假设你已经会在一台电脑上部署Octopress了，如果你还不会或者甚至不知道Octopress是什么，那么就先看看Octopress的官网，然后跟着Document一步一步安装部署就行了。也许你弄坏了本地的Octopress文件，重装了电脑，或和我一样有了一台新电脑:)，下面的内容都会告诉你怎么做。</p>
@@ -193,9 +193,9 @@ BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的�
   
   <entry>
     <title type="html"><![CDATA[CLLocationManager定位在iOS8上该注意的]]></title>
-    <link href="http://blog.alienjun.com/blog/2014/09/21/cllocationmanager-iOS8/"/>
+    <link href="http://alienjun.github.io/blog/2014/09/21/cllocationmanager-iOS8/"/>
     <updated>2014-09-21T21:45:06+08:00</updated>
-    <id>http://blog.alienjun.com/blog/2014/09/21/cllocationmanager-iOS8</id>
+    <id>http://alienjun.github.io/blog/2014/09/21/cllocationmanager-iOS8</id>
     <content type="html"><![CDATA[<p>今天突然发现之前一直正常的定位服务在iOS8上不能用了，我用的是一个开源的<a href="https://github.com/smallqiang/MMLocationManager" title="MMLocationManager">组件</a>。
 此组件实现的是一个MKMapView号称定位很准，也没有仔细去究是否定位精确。</p>
 
@@ -205,7 +205,7 @@ BaseViewController中的ViewDidLoad,那这样就可以拿到当前实例中的�
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="c1">//使用时可以使用定位</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="c1">//使用时可以使用定位</span>
 </span><span class='line'><span class="err">–</span> <span class="n">requestWhenInUseAuthorization</span>
 </span><span class='line'><span class="c1">//后台总是可以使用定位</span>
 </span><span class='line'><span class="err">–</span> <span class="n">requestAlwaysAuthorization</span>
@@ -225,9 +225,9 @@ value:定位的时候弹出提示权限附带显示的message。 所以在代码
   
   <entry>
     <title type="html"><![CDATA[缓存与性能]]></title>
-    <link href="http://blog.alienjun.com/blog/2014/08/23/cache-performance/"/>
+    <link href="http://alienjun.github.io/blog/2014/08/23/cache-performance/"/>
     <updated>2014-08-23T23:50:00+08:00</updated>
-    <id>http://blog.alienjun.com/blog/2014/08/23/cache-performance</id>
+    <id>http://alienjun.github.io/blog/2014/08/23/cache-performance</id>
     <content type="html"><![CDATA[<p>缓存，一词对做过web开发的开发者来说也许很熟悉（有些开发者可能没有关注过），其目的都是为了提升应用的
 性能而采取的一种技术；如今已经是无缓存不架构，在从事web开发的初期我也很少关注缓存，到自己架构项目后
 设计缓存框架才意识到缓存怎么才能更好的为我们的应用带来更好的体验。</p>
@@ -268,7 +268,7 @@ json格式的数据和图片即可达到我们的目的。</em></p>
   从远程服务器获取。
   <a href="https://github.com/rs/SDWebImage/tree/master/SDWebImage">https://github.com/rs/SDWebImage/tree/master/SDWebImage</a> 打开它的库一看，哇靠，这么多
   文件
-  <img src="http://blog.alienjun.com/assets/images/article/20140824-1.png"  width="800" /><br/>
+  <img src="http://alienjun.github.io/assets/images/article/20140824-1.png"  width="800" /><br/>
   其实从文件名都能看出个大概，类别扩展先看UIImageView+WebCache.h 其他暂时不关心，常用的方法设
   置一个图片的url和一个默认图片：</p>
 
@@ -282,7 +282,7 @@ json格式的数据和图片即可达到我们的目的。</em></p>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="cm">/**</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cm">/**</span>
 </span><span class='line'><span class="cm"> * Set the imageView `image` with an `url` and a placeholder.</span>
 </span><span class='line'><span class="cm"> *</span>
 </span><span class='line'><span class="cm"> * The download is asynchronous and cached.</span>
@@ -318,7 +318,7 @@ json格式的数据和图片即可达到我们的目的。</em></p>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="cp">#if TARGET_OS_IPHONE</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="cp">#if TARGET_OS_IPHONE</span>
 </span><span class='line'><span class="c1">//当内存警告时清理内存</span>
 </span><span class='line'>        <span class="p">[[</span><span class="bp">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">addObserver</span><span class="p">:</span><span class="nb">self</span>
 </span><span class='line'>                                                 <span class="nl">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">clearMemory</span><span class="p">)</span>
@@ -344,7 +344,7 @@ json格式的数据和图片即可达到我们的目的。</em></p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="n">SDWebImageOperation</span><span class="o">&gt;</span><span class="p">)</span><span class="nf">downloadImageWithURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="n">SDWebImageOperation</span><span class="o">&gt;</span><span class="p">)</span><span class="nf">downloadImageWithURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span>
 </span><span class='line'>                                         <span class="nf">options:</span><span class="p">(</span><span class="n">SDWebImageOptions</span><span class="p">)</span><span class="nv">options</span>
 </span><span class='line'>                                        <span class="nf">progress:</span><span class="p">(</span><span class="n">SDWebImageDownloaderProgressBlock</span><span class="p">)</span><span class="nv">progressBlock</span>
 </span><span class='line'>                                       <span class="nf">completed:</span><span class="p">(</span><span class="n">SDWebImageCompletionWithFinishedBlock</span><span class="p">)</span><span class="nv">completedBlock</span><span class="p">;</span>
@@ -362,9 +362,9 @@ json格式的数据和图片即可达到我们的目的。</em></p>
   
   <entry>
     <title type="html"><![CDATA[iOS中多种单例写法]]></title>
-    <link href="http://blog.alienjun.com/blog/2014/06/11/ios-singleton/"/>
+    <link href="http://alienjun.github.io/blog/2014/06/11/ios-singleton/"/>
     <updated>2014-06-11T20:27:06+08:00</updated>
-    <id>http://blog.alienjun.com/blog/2014/06/11/ios-singleton</id>
+    <id>http://alienjun.github.io/blog/2014/06/11/ios-singleton</id>
     <content type="html"><![CDATA[<p>Singleton
 单例模式在整个程序生命周期内，该对象只有一份存在内存中，就是C中的全局变量
 在实际开发中经常会有用到单例模式，记录一下oc中使用单例模式的几种写法。
@@ -407,7 +407,7 @@ json格式的数据和图片即可达到我们的目的。</em></p>
 <span class='line-number'>35</span>
 <span class='line-number'>36</span>
 <span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">static</span> <span class="n">Broadcast</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="k">static</span> <span class="n">Broadcast</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">//第一种</span>
 </span><span class='line'><span class="p">+(</span><span class="n">Broadcast</span> <span class="o">*</span><span class="p">)</span><span class="nf">sharedBroadcast</span><span class="p">{</span>
@@ -451,9 +451,9 @@ json格式的数据和图片即可达到我们的目的。</em></p>
   
   <entry>
     <title type="html"><![CDATA[Hello World!]]></title>
-    <link href="http://blog.alienjun.com/blog/2014/05/31/hello-world/"/>
+    <link href="http://alienjun.github.io/blog/2014/05/31/hello-world/"/>
     <updated>2014-05-31T01:57:46+08:00</updated>
-    <id>http://blog.alienjun.com/blog/2014/05/31/hello-world</id>
+    <id>http://alienjun.github.io/blog/2014/05/31/hello-world</id>
     <content type="html"><![CDATA[<p>第一次使用Octopress，Hello Octopress！</p>
 ]]></content>
   </entry>

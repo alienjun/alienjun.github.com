@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ios | AlienJun的技术博客]]></title>
   <link href="http://alienjun.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://alienjun.github.io/"/>
-  <updated>2015-01-27T17:54:35+08:00</updated>
+  <updated>2015-06-15T18:10:09+08:00</updated>
   <id>http://alienjun.github.io/</id>
   <author>
     <name><![CDATA[AlienJun]]></name>
@@ -218,12 +218,10 @@ json格式的数据和图片即可达到我们的目的。</em></p>
 <p>按他的注释我们知道它是一个异步下载并缓存，其实这样就够了；<br/>
 在看看SDImageCache.h 、SDWebImageManager.h  重点在这里，SDImageCache.h 有一个单例方法，初
 始化一个默认的图片缓存路径在Library/Caches下com.hackemist.SDWebImageCache. 是默认的文件夹名
-称，同时也作为内存中缓存的名字，然后还向通知中心注册了三个通知：<br/>
-&#8220;` objective-c</p>
+称，同时也作为内存中缓存的名字，然后还向通知中心注册了三个通知：</p>
 
-<h1>if TARGET_OS_IPHONE</h1>
-
-<p>//当内存警告时清理内存
+<pre><code class="obj-c">#if TARGET_OS_IPHONE
+//当内存警告时清理内存
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(clearMemory)
                                                      name:UIApplicationDidReceiveMemoryWarningNotification
@@ -237,42 +235,60 @@ json格式的数据和图片即可达到我们的目的。</em></p>
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(backgroundCleanDisk)
                                                      name:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil];</p>
-
-<h1>endif</h1>
-
-<pre><code>
-SDWebImageManager.h 最核心函数：
+                                                   object:nil];
+#endif  
 </code></pre>
 
-<ul>
-<li>(id <SDWebImageOperation>)downloadImageWithURL:(NSURL *)url
-                                       options:(SDWebImageOptions)options
-                                      progress:(SDWebImageDownloaderProgressBlock)progressBlock
-                                     completed:(SDWebImageCompletionWithFinishedBlock)completedBlock;</li>
-</ul>
-
-
-<p>&#8220;`
-这里就是处理请求和缓存的函数，逻辑就是根据设置的缓存策略进行请求并缓存，然后将图片同步回主线程。<br/>
-好了，看了SDWebImage的缓存实现我们是不是应该参考和借鉴一下它的思路设计一个满足我们业务需求的缓存实现
-当然图片缓存就可以用他的，如果图片缓存和业务数据缓存都用同一套代码就更好了。<br/>
-这里是我参考SDWebImage写的一个小demo  <a href="https://github.com/alienjun/MyCacheTest" title="MyCacheTest">点这里</a>，欢迎拍砖，还望不吝啬的支教。</p>
-
-<p>  原创文章，版权声明:自由转载-非商用-非衍生-保持署名.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS中多种单例写法]]></title>
-    <link href="http://alienjun.github.io/blog/2014/06/11/ios-singleton/"/>
-    <updated>2014-06-11T20:27:06+08:00</updated>
-    <id>http://alienjun.github.io/blog/2014/06/11/ios-singleton</id>
-    <content type="html"><![CDATA[<p>Singleton
-单例模式在整个程序生命周期内，该对象只有一份存在内存中，就是C中的全局变量
-在实际开发中经常会有用到单例模式，记录一下oc中使用单例模式的几种写法。
-在oc中通常默认以default、shared、current开头命名的方法。
-&#8220;` obj-c
+<p>SDWebImageManager.h 最核心函数：
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="n">SDWebImageOperation</span><span class="o">&gt;</span><span class="p">)</span><span class="nf">downloadImageWithURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span>
+</span><span class='line'>                                         <span class="nf">options:</span><span class="p">(</span><span class="n">SDWebImageOptions</span><span class="p">)</span><span class="nv">options</span>
+</span><span class='line'>                                        <span class="nf">progress:</span><span class="p">(</span><span class="n">SDWebImageDownloaderProgressBlock</span><span class="p">)</span><span class="nv">progressBlock</span>
+</span><span class='line'>                                       <span class="nf">completed:</span><span class="p">(</span><span class="n">SDWebImageCompletionWithFinishedBlock</span><span class="p">)</span><span class="nv">completedBlock</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">```</span>
+</span><span class='line'><span class="err">这里就是处理请求和缓存的函数，逻辑就是根据设置的缓存策略进行请求并缓存，然后将图片同步回主线程。</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="err">好了，看了</span><span class="n">SDWebImage</span><span class="err">的缓存实现我们是不是应该参考和借鉴一下它的思路设计一个满足我们业务需求的缓存实现</span>
+</span><span class='line'><span class="err">当然图片缓存就可以用他的，如果图片缓存和业务数据缓存都用同一套代码就更好了。</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="err">这里是我参考</span><span class="n">SDWebImage</span><span class="err">写的一个小</span><span class="n">demo</span>  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;https://github.com/alienjun/MyCacheTest&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;MyCacheTest&quot;</span><span class="o">&gt;</span><span class="err">点这里</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span><span class="err">，欢迎拍砖，还望不吝啬的支教。</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="err">原创文章，版权声明</span><span class="o">:</span><span class="err">自由转载</span><span class="o">-</span><span class="err">非商用</span><span class="o">-</span><span class="err">非衍生</span><span class="o">-</span><span class="err">保持署名</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="p">]]</span><span class="o">&gt;&lt;/</span><span class="n">content</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="n">entry</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">entry</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">title</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;html&quot;</span><span class="o">&gt;&lt;!</span><span class="p">[</span><span class="n">CDATA</span><span class="p">[</span><span class="n">iOS</span><span class="err">中多种单例写法</span><span class="p">]]</span><span class="o">&gt;&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;http://alienjun.github.io/blog/2014/06/11/ios-singleton/&quot;</span><span class="o">/&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">updated</span><span class="o">&gt;</span><span class="mi">2014</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">11</span><span class="nl">T20</span><span class="p">:</span><span class="mi">27</span><span class="o">:</span><span class="mo">06</span><span class="o">+</span><span class="mi">08</span><span class="o">:</span><span class="mo">00</span><span class="o">&lt;/</span><span class="n">updated</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="kt">id</span><span class="o">&gt;</span><span class="nl">http</span><span class="p">:</span><span class="c1">//alienjun.github.io/blog/2014/06/11/ios-singleton&lt;/id&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">content</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;html&quot;</span><span class="o">&gt;&lt;!</span><span class="p">[</span><span class="n">CDATA</span><span class="p">[</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Singleton</span>
+</span><span class='line'><span class="err">单例模式在整个程序生命周期内，该对象只有一份存在内存中，就是</span><span class="n">C</span><span class="err">中的全局变量</span>
+</span><span class='line'><span class="err">在实际开发中经常会有用到单例模式，记录一下</span><span class="n">oc</span><span class="err">中使用单例模式的几种写法。</span>
+</span><span class='line'><span class="err">在</span><span class="n">oc</span><span class="err">中通常默认以</span><span class="k">default</span><span class="err">、</span><span class="n">shared</span><span class="err">、</span><span class="n">current</span><span class="err">开头命名的方法。</span>
+</span></code></pre></td></tr></table></div></figure> obj-c
 static Broadcast *b;</p>
 
 <p>//第一种
